@@ -59,6 +59,6 @@ require('lazy').setup({
     end,
   },
 
-  require 'plugins.lsp'
+  require 'plugins.treesitter'
 
 })
