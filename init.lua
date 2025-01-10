@@ -1,3 +1,12 @@
+-- NOTES
+
+-- Quick reminder for Lazy
+--  'build' runs on install
+--  'config' runs on startup and likely requires explicit **.setup({...}) since it does not run automatically
+--  'opts' sets the options that get passed to **.setup({...}) implicitely. Empty/missing field implies defauls
+
+-- CONFIG FILE --
+
 -- Pay respect to your mom!
 print("Hi Mom!")
 
@@ -51,4 +60,3 @@ require('lazy').setup({
   }
 
 })
-
