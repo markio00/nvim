@@ -3,7 +3,7 @@
 -- Quick reminder for Lazy
 --  'build' runs on install
 --  'config' runs on startup and likely requires explicit **.setup({...}) since it does not run automatically
---  'opts' sets the options that get passed to **.setup({...}) implicitely. Empty/missing field implies defauls
+--  'opts' sets the options that get passed to **.setup({...}) implicitely. Empty field implies defauls and missing field means no startup
 
 -- CONFIG FILE --
 
@@ -57,6 +57,8 @@ require('lazy').setup({
     config = function() -- set the colorscheme during the configuration of the plugin
       vim.cmd.colorscheme 'tokyonight-night'
     end,
-  }
+  },
+
+  require 'plugins.lsp'
 
 })
