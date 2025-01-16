@@ -58,6 +58,7 @@ require("lazy").setup({
         end,
     },
 
+    require("plugins.telescope"),
     require("plugins.treesitter"),
     require("plugins.lsp"),
     require("plugins.autoformatting"),
