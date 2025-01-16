@@ -8,13 +8,29 @@ return {
         "williamboman/mason-lspconfig.nvim", -- Bridge between mason and lspconfig. Avoids single server setups, automates plugins configuration, translates between lspconfig and mason names.
         "WhoIsSethDaniel/mason-tool-installer.nvim", -- Enables finer contorl on the installed version of plugins, introduces CMDs and APIs to further control mason programaticaly.
         require("plugins.completion"),
+        "ray-x/go.nvim",
     },
 
     config = function()
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("mynvim-lsp-attach", { clear = true }),
+            callback = function(event)
+                local map = function(keys, func, desc)
+                    vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+                end
+                local tele = require("telescope.builtin")
+
+                map("gd", tele.lsp_definitions, "[G]oto [D]efinition")
+                map("gr", tele.lsp_references, "[G]oto [R]eference")
+                map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+            end,
+        })
+
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
         local servers = {
+            gopls = {},
             lua_ls = {
                 -- cmd = {...},
                 -- filetypes { ...},
@@ -53,5 +69,11 @@ return {
                 end,
             },
         })
+        require("go").setup({
+            lsp_cfg = false,
+        })
+        local cfg = require("go.lsp").config() -- config() return the go.nvim gopls setup
+
+        require("lspconfig").gopls.setup(cfg)
     end,
 }
