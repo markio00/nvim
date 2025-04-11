@@ -9,6 +9,7 @@ return {
         },
         "hrsh7th/cmp-nvim-lsp",
         "saadparwaiz1/cmp_luasnip",
+        "cohama/lexima.vim", -- Autopairs
     },
     config = function()
         local cmp = require("cmp")
