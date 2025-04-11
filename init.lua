@@ -23,6 +23,8 @@ vim.g.have_nerd_font = true
 vim.opt.number = true -- Show row numbers
 vim.opt.relativenumber = true -- Set relative row numbers
 
+vim.opt.signcolumn = "yes:2"
+
 vim.schedule(function()
     vim.opt.clipboard = "unnamedplus" -- Sync clipboard between nvim and OS (schedule for startup optimization)
 end)
@@ -59,22 +61,9 @@ require("lazy").setup({
     },
 
     require("plugins.telescope"),
+    require("plugins.git"),
     require("plugins.treesitter"),
     require("plugins.lsp"),
     require("plugins.autoformatting"),
-
-    {
-        "ray-x/go.nvim",
-        dependencies = { -- optional packages
-            "ray-x/guihua.lua",
-            "neovim/nvim-lspconfig",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        --        config = function()
-        --          require("go").setup()
-        --    end,
-        event = { "CmdlineEnter" },
-        ft = { "go", "gomod" },
-        build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-    },
+    require("plugins.utils"),
 })
