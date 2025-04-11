@@ -67,3 +67,5 @@ require("lazy").setup({
     require("plugins.autoformatting"),
     require("plugins.utils"),
 })
+
+require("util.commands")
