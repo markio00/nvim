@@ -25,6 +25,9 @@ vim.opt.relativenumber = true -- Set relative row numbers
 
 vim.opt.signcolumn = "yes:2"
 
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
 vim.schedule(function()
     vim.opt.clipboard = "unnamedplus" -- Sync clipboard between nvim and OS (schedule for startup optimization)
 end)

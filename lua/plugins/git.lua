@@ -24,8 +24,10 @@ return {
         "lewis6991/gitsigns.nvim",
         opts = {
             signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+            -- FIX: `numhl` conflicts (9verrides) 'cursorline' fg highlights
             numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
-            linehl = true, -- Toggle with `:Gitsigns toggle_linehl`
+            -- FIX: `linehl` confilcts (overrides) 'todo_comments' bg highlights -> see 'gitsigns' sign changed event and todo_comments 'draw_highlights'
+            linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
             word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
         },
     },
