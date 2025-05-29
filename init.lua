@@ -25,13 +25,16 @@ vim.opt.relativenumber = true -- Set relative row numbers
 
 vim.opt.signcolumn = "yes:2"
 
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus" -- Sync clipboard between nvim and OS (schedule for startup optimization)
 end)
 
 vim.opt.undofile = true -- File history saved to undo file in `undodir`directory
 
-vim.opt.scrolloff = 10 -- Minimum lines between cursor and top/bottom edges
+vim.opt.scrolloff = 8 -- Minimum lines between cursor and top/bottom edges
 
 -- Setting up the plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
