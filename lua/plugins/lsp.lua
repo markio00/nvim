@@ -7,6 +7,7 @@ M = {
         "williamboman/mason.nvim", -- Package manager for LSP. DAPs, linters & formatters,
         "williamboman/mason-lspconfig.nvim", -- Bridge between mason and lspconfig. Avoids single server setups, automates plugins configuration, translates between lspconfig and mason names.
         "WhoIsSethDaniel/mason-tool-installer.nvim", -- Enables finer contorl on the installed version of plugins, introduces CMDs and APIs to further control mason programaticaly.
+        "folke/trouble.nvim",
         require("plugins.completion"),
     },
 

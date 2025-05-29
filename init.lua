@@ -69,6 +69,7 @@ require("lazy").setup({
     require("plugins.lsp"),
     require("plugins.autoformatting"),
     require("plugins.utils"),
+    require("plugins.trouble"),
 })
 
 require("util.commands")
