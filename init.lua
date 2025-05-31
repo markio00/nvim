@@ -29,7 +29,7 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus" -- Sync clipboard between nvim and OS (schedule for startup optimization)
+    vim.opt.clipboard = "unnamedplus" -- Sync clipboard between nvim and OS (schedule for startup optimization)
 end)
 
 vim.opt.undofile = true -- File history saved to undo file in `undodir`directory
@@ -39,29 +39,29 @@ vim.opt.scrolloff = 8 -- Minimum lines between cursor and top/bottom edges
 -- Setting up the plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		error("Error cloning lazy.nvim:\n" .. out)
-	end
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        error("Error cloning lazy.nvim:\n" .. out)
+    end
 end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins
 require("lazy").setup({
-	-- Detect tabstop and shiftwidth automatically
-	"tpope/vim-sleuth",
+    -- Detect tabstop and shiftwidth automatically
+    "tpope/vim-sleuth",
 
-	-- Set colorscheme to tokyonight (night style)
-	{
-		"folke/tokyonight.nvim",
-		lazy = false, -- main colorscheme has to load at startup
-		priority = 1000, -- and needs to load first
-		config = function() -- set the colorscheme during the configuration of the plugin
-			vim.cmd.colorscheme("tokyonight-night")
-		end,
-	},
+    -- Set colorscheme to tokyonight (night style)
+    {
+        "folke/tokyonight.nvim",
+        lazy = false, -- main colorscheme has to load at startup
+        priority = 1000, -- and needs to load first
+        config = function() -- set the colorscheme during the configuration of the plugin
+            vim.cmd.colorscheme("tokyonight-night")
+        end,
+    },
 
     require("plugins.telescope"),
     require("plugins.git"),
@@ -70,7 +70,6 @@ require("lazy").setup({
     require("plugins.autoformatting"),
     require("plugins.utils"),
     require("plugins.trouble"),
-
 })
 
 require("util.commands")
